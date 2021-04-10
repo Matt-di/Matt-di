@@ -1,3 +1,4 @@
+### HEY >>>
 - 👋 Hi, I’m @Matt-di
 - 👀 I’m interested in coding and writing to develop apps
 - 🌱 I’m currently learning pursuing bachelor of computer science at MTU
