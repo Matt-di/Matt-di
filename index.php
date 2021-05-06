@@ -17,7 +17,48 @@
 
         <main>
             <section id="list_data_section">
-                Here the data will be go here.
+                <div>
+                    <h3>The following data</h3>
+                    <div class="card_item">
+                        <div class="card_title">
+                            <p>Soil Moisture detail</p>
+                        </div>
+                        <div class="card_container">
+                            <div class="card_image">
+                                <img src="moisture.jpg" alt="Soil Moisture Image"/>
+                            </div>
+                            <div class="card_detail">
+                                <p>The Soil Status is : 40% wet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_item">
+                        <div class="card_title">
+                            <p>Humidity detail</p>
+                        </div>
+                        <div class="card_container">
+                            <div class="card_image">
+                                <img src="moisture.jpg" alt="Soil Moisture Image"/>
+                            </div>
+                            <div class="card_detail">
+                                <p>The Soil Status is : 40% wet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_item">
+                        <div class="card_title">
+                            <p>Temperature detail</p>
+                        </div>
+                        <div class="card_container">
+                            <div class="card_image">
+                                <img src="moisture.jpg" alt="Soil Moisture Image"/>
+                            </div>
+                            <div class="card_detail">
+                                <p>The Soil Status is : 40% wet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="detail_data_section">
