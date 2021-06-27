@@ -16,6 +16,7 @@ $result = $sensor->read();
 if($result->num_rows >0){
     $sensorDatas = array();
     $sensorDatas['datas'] = array();
+    $sensorDatas['totalData'] = $result->num_rows;
 
     while($row = $result->fetch_assoc())
     {
@@ -26,7 +27,9 @@ if($result->num_rows >0){
             "humidity" => $humidity,
             "temperature" => $temperature,
             "motorStatus" => $motor_pump_status,
-            "recommendation" =>$recommendation
+            "recommendation" =>$recommendation,
+            "updated_date" =>$updated_date
+
         );
         array_push($sensorDatas['datas'],$data);
 
