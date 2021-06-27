@@ -105,19 +105,17 @@
 
     function getUpdate() {
         $.ajax({
-            url: 'actions.php',
+            url: 'api/sensors/read',
             method: "POST",
             dataType: "json",
-            data: {
-                page: "data",
-                action: "fetchSoil",
-            },
+            
             success: function(data, textStat) {
-                console.log(data);
+                console.log(data.datas);
+                let formatedData = makeXYAxis(data);
                 // alert(textStat);
-                if (myChart == null) plotChart(data);
+                if (myChart == null) plotChart(formatedData);
                 else {
-                    updateChart(data);
+                    updateChart(formatedData);
                 }
             },
             error: function(data, textstst, error) {
@@ -128,43 +126,70 @@
     }
 
     function updateChart(data) {
-        myChart.data.labels = data['xAxis'];
+        myChart.data.labels = data.updated_date;
         myChart.data.datasets.forEach((dataset, i) => {
             if (i == 0) {
-                dataset.data = data['soilMoisture'];
+                dataset.data = data.soilMoisture;
             } else if (i == 1) {
-                dataset.data = data['temperature'];
+                dataset.data = data.temperature;
             } else if (i == 2) {
-                dataset.data = data['humidity'];
+                dataset.data = data.humidity;
             }
         });
         myChart.update();
     }
 
+    function makeXYAxis(data)
+    {
+        let lenght  = data.totalData;
+        
+        let datas = data.datas.slice(15);
+        let x = [];
+        let y = [];
+        let z = [];
+        let w = [];
+
+
+        datas.forEach((row ,index)=>{
+            
+            x.push(row['soilMoisture']);
+            y.push(row['humidity']);
+            z.push(row['temperature']);
+            [n,nn] = row['updated_date'].split(":");
+            w.push(row['updated_date']);
+            
+        })
+
+        updated= {"soilMoisture":x,
+                "temperature":z,
+                "humidity":y,
+                "updated_date":w};
+        return updated;
+    }
     function plotChart(sensorData) {
         myChart = new Chart("myChart", {
             type: "line",
             data: {
-                labels: sensorData['xAxis'],
+                labels: sensorData.updated_date,
                 datasets: [{
                         //backgroundColor: "rgba(55,43,66,0.5)",
                         label: "Soil",
                         borderColor: "red",
-                        data: sensorData['soilMoisture'],
+                        data: sensorData.soilMoisture,
                         fill: false
                     },
                     {
                         //backgroundColor: "rgba(55,43,66,0.5)",
                         label: 'Temp',
                         borderColor: "blue",
-                        data: sensorData['temperature'],
+                        data: sensorData.temperature,
                         fill: false
                     },
                     {
                         //backgroundColor: "rgba(55,43,66,0.5)",
                         label: "Humid",
                         borderColor: "green",
-                        data: sensorData['humidity'],
+                        data: sensorData.humidity,
                         fill: false
                     }
                 ]
@@ -195,7 +220,7 @@
 
     function getBaseData(){
         $.ajax({
-            url: 'actions.php',
+            url: 'api/base-data/read',
             method: "POST",
             dataType: "json",
             data: {
@@ -206,17 +231,34 @@
                 console.log(data);
                 // alert(textStat);
                 var mybasedata = $('#mybasedata');
-                mybasedata.html(
+                var res="";
+                data.baseDatas.forEach(data => {
+                    if(data.name == 'motor_status')
+                    {
+                        res+="<p>"+data.name+"="+ `${data.value=="0"?"Closed":"Opened"}`+"</p>";
+                    }
+                    else if(data.name == "control_mode")
+                    {
+                        res+="<p>"+data.name+"="+ `${data.value=="0"?"Automatic (Arduino) ":"Manual(User)"}`+"</p>";
+
+                    }else
+                    res+="<p>"+data.name+"="+ data.value+"</p>";
+                });
+                    
+                
+                mybasedata.html(res);
+                /*
                     `
+                    
                     <p>Motor Status = ${ data.motorStatus==0?"Closed":"Opened"}</p>
                     <p>Control Mode = ${ data.controlMode == 0 ? "Automatic":"Manual"}</p>
-                    <p>Soil Moisture Threshold Value = ${ data.soilMoistureTV}</p>
+                    <p>Soil Moisture Threshold Value = ${ data.baseDatas[0].value}</p>
                     <p>Humidity Threshold Value = ${ data.humidityTV}</p>
                     <p>Temperature Threshold Value = ${ data.temperatureTV}</p>
                     <p>Request Time for Arduino = ${ data.requestTime}</p>
                 
                     `
-                )
+                )*/
                 
             },
             error: function(data, textstst, error) {
