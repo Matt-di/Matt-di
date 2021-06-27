@@ -1,9 +1,31 @@
 <?php
-$host = 'localhost';
-$username="root";
-$password = "";
-$dbname = "smart_irrigation";
-$conn = new mysqli($host,$username,$password,$dbname);
-if(!$conn){
-    die("Cannot create connection to the database for the moment");
+
+class Action
+{
+
+    var $host;
+    var $username;
+    var $password;
+    var $dbname;
+
+    var $query;
+    var $stmt;
+    var $row;
+    var $data;
+    var $param;
+    function __construct()
+    {
+        $this->host = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->dbname = "smart_irrigation";
+        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+    }
+
+    function executeQuery()
+    {
+        # code...
+        return  $this->conn->query($this->query);
+        
+    }
 }

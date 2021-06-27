@@ -1,0 +1,6 @@
+RewriteEngine ON
+RewriteRule ^sensors/insert$ sensors/insert.php [NC,L]
+RewriteRule ^sensorsread$ sensors/read.php [NC,L]
+
+RewriteRule ^base-data/update$ BaseData/update.php [NC,L]
+RewriteRule ^base-data/read$ BaseData/read.php [NC,L]

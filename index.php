@@ -4,7 +4,11 @@
 <head>
     <title>Smart Iriigation System </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="index.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/Chart.js"> </script>
+    <script src="js/jquery.js"> </script>
+    <script src="js/bootstrap.min.js"> </script>
 </head>
 
 <body>
@@ -63,13 +67,204 @@
         </section>
 
         <section id="detail_data_section">
-            The graph and extra thing will be put.
+            <canvas id="myChart" style="width: 100%; max-width:700px">
+            </canvas>
         </section>
-        <section>
-            dhdj
 
+        <section id="status-section">
+            <h2>base data status</h2>
+            <div id="mybasedata" class="jumbotron"></div>
+        </section>
+
+        <section id="control-section" >
+            <div>
+                <p>Actions </p>
+                <div>
+                    <button type="button" class="btn btn-primary m-2" id="change-soilTV">Change SoilMoisture Threshold</button>
+                    <button type="button" class="btn btn-primary m-2" id="change-tempTV">Change Temperature Threshold</button>
+                    <button type="button" class="btn btn-primary m-2" id="change-humidTV">Change Humidity Threshold</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="section-shortcut">
+            <div class="shortcut-container">
+                <button>
+                    Motor OFF
+                </button>
+                <button>
+                    Motor OFF
+                </button>
+            </div>
         </section>
     </main>
 </body>
+<script>
+    var myChart = null;
+
+    function getUpdate() {
+        $.ajax({
+            url: 'actions.php',
+            method: "POST",
+            dataType: "json",
+            data: {
+                page: "data",
+                action: "fetchSoil",
+            },
+            success: function(data, textStat) {
+                console.log(data);
+                // alert(textStat);
+                if (myChart == null) plotChart(data);
+                else {
+                    updateChart(data);
+                }
+            },
+            error: function(data, textstst, error) {
+                console.log(error);
+            }
+
+        });
+    }
+
+    function updateChart(data) {
+        myChart.data.labels = data['xAxis'];
+        myChart.data.datasets.forEach((dataset, i) => {
+            if (i == 0) {
+                dataset.data = data['soilMoisture'];
+            } else if (i == 1) {
+                dataset.data = data['temperature'];
+            } else if (i == 2) {
+                dataset.data = data['humidity'];
+            }
+        });
+        myChart.update();
+    }
+
+    function plotChart(sensorData) {
+        myChart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: sensorData['xAxis'],
+                datasets: [{
+                        //backgroundColor: "rgba(55,43,66,0.5)",
+                        label: "Soil",
+                        borderColor: "red",
+                        data: sensorData['soilMoisture'],
+                        fill: false
+                    },
+                    {
+                        //backgroundColor: "rgba(55,43,66,0.5)",
+                        label: 'Temp',
+                        borderColor: "blue",
+                        data: sensorData['temperature'],
+                        fill: false
+                    },
+                    {
+                        //backgroundColor: "rgba(55,43,66,0.5)",
+                        label: "Humid",
+                        borderColor: "green",
+                        data: sensorData['humidity'],
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Sensor Data"
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: "#547454"
+                    }
+                },
+                // scales:{
+                //     yAxes:[{
+                //         ticks:{
+                //             beginAtZero:true
+                //         }
+                //     }]
+                // }
+
+            },
+            borderColor: "rgba(0,0,0,0)"
+        });
+    }
+
+    function getBaseData(){
+        $.ajax({
+            url: 'actions.php',
+            method: "POST",
+            dataType: "json",
+            data: {
+                api_key: "data",
+                action: "fetch",
+            },
+            success: function(data, textStat) {
+                console.log(data);
+                // alert(textStat);
+                var mybasedata = $('#mybasedata');
+                mybasedata.html(
+                    `
+                    <p>Motor Status = ${ data.motorStatus==0?"Closed":"Opened"}</p>
+                    <p>Control Mode = ${ data.controlMode == 0 ? "Automatic":"Manual"}</p>
+                    <p>Soil Moisture Threshold Value = ${ data.soilMoistureTV}</p>
+                    <p>Humidity Threshold Value = ${ data.humidityTV}</p>
+                    <p>Temperature Threshold Value = ${ data.temperatureTV}</p>
+                    <p>Request Time for Arduino = ${ data.requestTime}</p>
+                
+                    `
+                )
+                
+            },
+            error: function(data, textstst, error) {
+                console.log(error);
+            }
+    });
+    }
+    function changeControl(mode){
+
+    }
+    function changeMotor(status){
+
+    }
+
+    function changeThreshold(value){
+
+    }
+
+    function setTimer(time){
+
+    }
+
+
+
+    $(document).ready(function() {
+
+
+        setInterval(function() {
+            getBaseData();
+            getUpdate();
+        }, 3000);
+        
+        // var xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 120, 130, 140, 150, 80, 90, 100, 110, 120];
+        // var yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15, 11, 14, 14, 15, 8, 9, 9, 9, 10];
+
+
+
+    });
+    // var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //         if (this.readyState == 4 && this.status == 200) {
+    //             //var data = JSON.parse(this.responseText);
+    //             console.log(this.responseText);
+    //         }
+    //     };
+    //     xhttp.open("POST", "actions.php", true);
+    //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     xhttp.send("page=data&action=fetchSoil");
+</script>
 
 </html>
