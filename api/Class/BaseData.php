@@ -58,17 +58,16 @@ class BaseData
     {
         
             $this->id = $this->cleanInput($this->id);
-            $this->soilMoistureTV = $this->cleanInput($this->soilMoistureTV);
-            $this->humidityTV = $this->cleanInput($this->humidityTV);
-            $this->temperatureTV = $this->cleanInput($this->temperatureTV);
-            $this->motorStatus = $this->cleanInput($this->motorStatus);
-            $this->controlMode = $this->cleanInput($this->controlMode);
-            $this->apiKey = $this->cleanInput($this->apiKey);
-            $this->requestTime = $this->cleanInput($this->requestTime);
+            // $this->soilMoistureTV = $this->cleanInput($this->soilMoistureTV);
+            // $this->humidityTV = $this->cleanInput($this->humidityTV);
+            // $this->temperatureTV = $this->cleanInput($this->temperatureTV);
+            // $this->motorStatus = $this->cleanInput($this->motorStatus);
+            // $this->controlMode = $this->cleanInput($this->controlMode);
+            // $this->apiKey = $this->cleanInput($this->apiKey);
+            // $this->requestTime = $this->cleanInput($this->requestTime);
 
             $this->name = $this->cleanInput($this->name);
             $this->value = $this->cleanInput($this->value);
-
 
 
             if(!empty($this->name)){

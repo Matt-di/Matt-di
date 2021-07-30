@@ -1,20 +1,50 @@
 <?php
-include("config.php");
+include("Action.php");
 $action = new Action;
 $conn = new mysqli("localhost", "root", "", "smart_irrigation");
 
 if (isset($_POST['page'])) {
     if ($_POST['page'] == 'login') {
         if ($_POST['action'] == "login") {
-            $username = $_POST['sis-username'];
-            $password = $_POST['sis-password'];
+            $email = htmlspecialchars(strip_tags( $_POST['email']));
+            $password = $_POST['password'];
+
+            $query = "SELECT * FROM user 
+                WHERE email='$email'";
+            $result = $conn->query($query);
+            if($result->num_rows ==1)
+            {
+                $resArr = $result->fetch_assoc();
+                
+                if($resArr['password'] == $password)
+                {
+                    //extract($row);
+                    session_start();
+                    $_SESSION['userLogged'] = true;
+                    $_SESSION['email']= $resArr['email'];
+                    $_SESSION['password']= $resArr['password'];
+                    
+
+                    http_response_code(200);
+                    echo json_encode(array("message"=>"User logged succefully",
+                                            "status"=>true));
+                }
+                else{
+                    echo json_encode(array("message"=>"Incorrect Password, Please try again",
+                "status"=>false));
+                }
+            }else{
+                echo json_encode(array("message"=>"Email is not Registered",
+                "status"=>false));
+
+            }
         }
     }
-    if ($_POST['page'] == "manage") {
+    else if ($_POST['page'] == "manage") {
         if ($_POST['action'] == "update") {
         }
     }
-    if ($_POST['page'] == "data") {
+    else if ($_POST['page'] == "data") {
         if ($_POST['action'] == "fetchSoil") {
 
             $query = "SELECT soil_moisture,updated_date,humidity,temperature from sensor_detail ORDER BY data_id DESC limit 15  ";
@@ -30,7 +60,7 @@ if (isset($_POST['page'])) {
                     $xAxis[] = explode(" ", $row['updated_date'])[1];
                     $soilMoisture[] = $row['soil_moisture'];
                     $temperature[] = $row['temperature'];
-                    $humidity[] = $row['humidity']-950;
+                    $humidity[] = $row['humidity'] - 950;
                 }
             $data = array(
                 "xAxis" => $xAxis,
@@ -78,7 +108,7 @@ if (isset($_POST['page'])) {
             $query = "UPDATE basedata
                      SET motor_status=$motor
                      WHERE id=1";
-            if($conn->query($query));
+            if ($conn->query($query));
             echo "Sucess" . $humidity;
         } else {
             echo "Error Ocurred data not inserted";

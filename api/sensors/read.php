@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin:*");
 header("Content-Type:application/json; charset-UTF-8");
+//header("Access-Control-Allow-Methods:GET");
 
 include_once "../Class/Sensor.php";
 include_once "../config/Database.php";
@@ -11,6 +12,8 @@ $db = $database->getConnection();
 $sensor = new Sensor($db);
 
 $sensor->data_id = (isset($_GET['id']) && $_GET['id'])?$_GET['id']:'0';
+if(isset($_GET["limit"]))
+$sensor->limit = $_GET['limit'];
 $result = $sensor->read();
 
 if($result->num_rows >0){
@@ -29,10 +32,8 @@ if($result->num_rows >0){
             "motorStatus" => $motor_pump_status,
             "recommendation" =>$recommendation,
             "updated_date" =>$updated_date
-
         );
         array_push($sensorDatas['datas'],$data);
-
 
     }
 

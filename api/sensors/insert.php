@@ -14,10 +14,7 @@ $sensorsData = new Sensor($db);
 
 $inpuData = json_decode(file_get_contents("php://input"));
 
-if(!empty($inpuData->soilMoisture) &&
-    !empty($inpuData->temperature) &&
-    !empty($inpuData->humidity) &&
-    !empty($inpuData->motorStatus))
+if($inpuData)
     {
         $sensorsData->soilMoisture = $inpuData->soilMoisture;
         $sensorsData->temperature = $inpuData->temperature;

@@ -10,6 +10,8 @@ class Sensor
 
     private $database;
     private $sensorTable;
+
+    private $limit = 10;
     function __construct($database)
     {
         $this->database = $database;
@@ -26,9 +28,8 @@ class Sensor
     {
         $stmt = $this->database->prepare(
             "INSERT INTO " . $this->sensorTable .
-                " ( 'soil_moisture','temperature',
-            'humidity','motor_status)
-             VALUES (?,?,?,?)"
+                " ( soil_moisture,temperature, humidity, motor_pump_status)
+            VALUES (?,?,?,?)"
         );
 
         $this->soilMoisture = $this->cleanInput($this->soilMoisture);
@@ -54,18 +55,23 @@ class Sensor
 
     function read()
     {
+        $query =
+            "SELECT * FROM ".$this->sensorTable;
         if($this->data_id)
         {
-            $stmt = $this->database->prepare(
-                "SELECT * FROM ".$this->sensorTable.
-                " WHERE data_id =?"
-            );
+            $query .= " WHERE data_id =?";
+            
+            if(isset($this->limit))
+            {
+                $query .=" LIMIT ".$this->limit;
+            }
+            $stmt = $this->database->prepare($query);
 
             $stmt->bind_param("i",$this->data_id);
         }else{
-            $stmt = $this->database->prepare(
-                "SELECT * FROM ".$this->sensorTable
-            );
+            
+            //$query .=" LIMIT ".$this->limit;
+            $stmt = $this->database->prepare($query);
         }
         $stmt->execute();
         $result = $stmt->get_result();
@@ -76,5 +82,20 @@ class Sensor
     function cleanInput($input)
     {
         return htmlspecialchars(strip_tags($input));
+    }
+
+    function delete($id)
+    {
+
+    }
+
+    function update($id)
+    {
+
+    }
+
+    function delete15DayOld()
+    {
+        
     }
 }

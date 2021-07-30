@@ -1,0 +1,32 @@
+#sis-header{
+    background: url("assets/back2.gif") no-repeat ;
+    background-size: cover;
+    height: 250px;
+    width: auto;
+    background-origin: content-box;
+}
+
+#login{
+    align-self: center;
+    background-color: rgb(53, 53, 163);
+}
+
+#login:hover{
+    background-color: rgb(12, 12, 41);
+    color: azure;
+}
+
+.sis-link{
+    color:  rgb(62, 62, 218);
+    
+}
+
+.sis-link:hover{
+    background-color: bisque;
+    color: black;
+}
+
+.sis-login-header{
+    background-color: rgba(62, 62, 218,0.5);
+    
+}

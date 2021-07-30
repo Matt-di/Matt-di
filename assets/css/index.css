@@ -20,7 +20,7 @@ header {
 header h2 {
     font-size: 50px;
     text-transform: uppercase;
-    color: rgb(26, 119, 224);
+    color: rgb(84, 136, 194);
 
 }
 
@@ -29,15 +29,15 @@ main {
 
 }
 
-#list_data_section {
-    float: left;
-    width: 50%;
-    align-self: center;
+#myChart{
+    max-height:400px;
+    width: auto;
 }
 
 #detail_data_section {
-    float: left;
-    width: 50%;
+    
+    width: 100%;
+    height: fit-content;
 }
 
 #detail_data_section:after {
@@ -52,9 +52,9 @@ main:after {
 
 /* Card Css */
 div.card_item {
-    width: 80%;
+    width: 90%;
     height: 80%;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px 0 rgba(175, 45, 45, 0.1), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -74,12 +74,27 @@ div.card_detail {
 
 }
 
-@media (max-width: 600px) {
+@media screen and(max-width: 600px) {
     #detail_data_section {
+        width: 100%;
+   
+    }
+    #myChart{
+        height: 800px;
         width: 100%;
     }
 
     #list_data_section {
         width: 100%;
+    }
+
+    
+}
+
+@media  screen and(max-width: 300px){
+    #myChart{
+        height: 800px;
+        width: 100%;
+
     }
 }
