@@ -1,5 +1,5 @@
 <?php
-        session_start();
+session_start();
 
 class Action
 {
@@ -28,30 +28,34 @@ class Action
         # code...
         return  $this->conn->query($this->query);
     }
+    function updateLanguage($lang)
+    {
+        $query = "UPDATE setting SET lang='$lang'";
+        if ($this->conn->query($query)) {
+            return true;
+        } else return false;
+    }
 
-    function selectLanguage($language)
+    function selectLanguage()
 
     {
-        if (!empty($language)) {
-            $query = "SELECT lang FROM setting";
-            $result = $this->conn->query($query);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    return $row['lang'];
-                }
-            } else return $language;
+
+        $query = "SELECT lang FROM setting";
+        $result = $this->conn->query($query);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc() ;
+                return $row['lang'];
+            
         }
     }
 
     function setSession()
     {
-
     }
 
     function isSetSession()
     {
-        if(isset($_SESSION['email'])&& isset($_SESSION['password'])&& isset($_SESSION['userLogged']))
-        {
+        if (isset($_SESSION['email']) && isset($_SESSION['password']) && isset($_SESSION['userLogged'])) {
             return true;
         }
 

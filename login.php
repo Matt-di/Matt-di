@@ -1,5 +1,5 @@
 <?php
-include_once "Action.php";
+include_once "class/Action.php";
 $action = new Action();
 
 // if(!$action->isSetSession())

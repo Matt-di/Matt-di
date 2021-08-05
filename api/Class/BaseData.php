@@ -57,7 +57,7 @@ class BaseData
     function update()
     {
         
-            $this->id = $this->cleanInput($this->id);
+            //$this->id = $this->cleanInput($this->id);
             // $this->soilMoistureTV = $this->cleanInput($this->soilMoistureTV);
             // $this->humidityTV = $this->cleanInput($this->humidityTV);
             // $this->temperatureTV = $this->cleanInput($this->temperatureTV);
@@ -75,7 +75,7 @@ class BaseData
                         SET value=? WHERE name=?";
             $stmt = $this->database->prepare($query);
 
-            $stmt->bind_param("ss",$this->value,$this->name);
+            $stmt->bind_param("is",$this->value,$this->name);
 
             if($stmt->execute())
             {
@@ -90,6 +90,6 @@ class BaseData
 
     function cleanInput($input)
     {
-        return htmlspecialchars(strip_tags($input));
+       return htmlspecialchars(strip_tags($input));
     }
 }

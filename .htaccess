@@ -1,0 +1,15 @@
+RewriteEngine ON
+RewriteRule ^api/sensors/insert$ api/sensors/insert.php [NC,L]
+RewriteRule ^api/sensors/read$ api/sensors/read.php [NC,L]
+
+RewriteRule ^api/base-data/update$ api/BaseData/update.php [NC,L]
+RewriteRule ^api/base-data/read$ api/BaseData/read.php [NC,L]
+
+RewriteRule ^api/user/login$ api/User/read.php [NC,L]
+
+RewriteRule ^login$ login.php [NC,L]
+
+
+RewriteRule ^userprofile$ View/user_profile.php [NC,L]
+RewriteRule ^$ index.php [NC,L]
+RewriteRule ^weathercondition$ View/weather_condition.php [NC,L]

@@ -7,14 +7,17 @@
 body {
     margin: 10px;
     box-sizing: border-box;
+    background: url("../assets/back2.jpg") no-repeat;
+
 }
 
 header {
-    height: 200px;
-    background-color: ghostwhite;
-    padding: 20px;
-    margin: 5px;
+    background: url("../assets/back2.jpg") no-repeat;
+    background-size: cover;
+    height: 250px;
+    width: auto;
     text-align: center;
+    background-origin: content-box;
 }
 
 header h2 {
@@ -29,13 +32,13 @@ main {
 
 }
 
-#myChart{
-    max-height:400px;
+#myChart {
+    max-height: 400px;
     width: auto;
 }
 
 #detail_data_section {
-    
+
     width: 100%;
     height: fit-content;
 }
@@ -52,10 +55,16 @@ main:after {
 
 /* Card Css */
 div.card_item {
-    width: 90%;
-    height: 80%;
+    height: 200px;
     box-shadow: 0 4px 4px 0 rgba(175, 45, 45, 0.1), 0 6px 2px 0 rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin: 8px;
+}
+
+div.card_item .card_detail {
+    margin: 15px;
+    font-style: italic;
+
 }
 
 div.card_item div.card_title {
@@ -74,12 +83,53 @@ div.card_detail {
 
 }
 
+nav {
+    background: rgb(10, 24, 24);
+}
+
+nav .navbar-toggler {
+    display: block;
+    background-color: black;
+    color: white;
+
+}
+
+#sis-navbar a {
+    padding: 15px;
+    animation: linear;
+    color: white;
+    border: 2px red;
+    border-radius: 5px;
+}
+
+#sis-navbar .dropdown-item {
+    color: black;
+}
+
+#sis-navbar a:hover {
+    background-color: rgb(44, 121, 121);
+    color: white;
+
+}
+
+#mybasedata {
+    margin: 10px;
+    padding: 10px;
+}
+
+#mybasedata p {
+    background-color: aliceblue;
+    text-transform: capitalize;
+
+}
+
 @media screen and(max-width: 600px) {
     #detail_data_section {
         width: 100%;
-   
+
     }
-    #myChart{
+
+    #myChart {
         height: 800px;
         width: 100%;
     }
@@ -88,11 +138,22 @@ div.card_detail {
         width: 100%;
     }
 
-    
+    header {
+        height: auto;
+
+    }
+
+    header h2 {
+        font-size: 3px;
+        font-weight: 100em;
+
+    }
+
+
 }
 
-@media  screen and(max-width: 300px){
-    #myChart{
+@media screen and(max-width: 300px) {
+    #myChart {
         height: 800px;
         width: 100%;
 
