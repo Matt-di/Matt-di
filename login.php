@@ -100,50 +100,44 @@ $action = new Action();
 </body>
 
 <script>
+    $(document).ready(function() {
 
-    $(document).ready(function(){
-
-        $("#sis-login-form").on("submit",function(event){
+        $("#sis-login-form").on("submit", function(event) {
             event.preventDefault();
 
-        $.ajax({
-            url:"actions.php",
-            data:$(this).serialize(),
-            method:"POST",
-            dataType:"json",
-            beforeSend:function(){
-                $("#login").text("Please wait...");
-                $("#login").attr("disabled",true);
-                
-            },
-            success:function(data)
-            {
-                $("#login").removeAttr("disabled");
-                $("#login").text("Login");
+            $.ajax({
+                url: "actions.php",
+                data: $(this).serialize(),
+                method: "POST",
+                dataType: "json",
+                beforeSend: function() {
+                    $("#login").text("Please wait...");
+                    $("#login").attr("disabled", true);
 
-                if(data.data)
-                {
-                    location="index.php";
+                },
+                success: function(data) {
+                    $("#login").removeAttr("disabled");
+                    $("#login").text("Login");
+
+                    if (data.data) {
+                        location = "index.php";
+                    }
+
+                    console.log(data);
+                },
+                error: function(errorData) {
+                    console.log(errorData);
+                    $("#message").html("<p>We can't verify this input</p>");
                 }
 
-                console.log(data);
-            },
-            error:function(errorData)
-            {
-                console.log(errorData);
-                $("#message").html("<p>We can't verify this input</p>");
-            }
-            
-        })
+            })
         });
-        
+
     });
 
-    function loginRequest()
-    {
+    function loginRequest() {
 
     }
-
 </script>
 
 </html>

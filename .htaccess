@@ -6,7 +6,7 @@ RewriteRule ^api/base-data/update$ api/BaseData/update.php [NC,L]
 RewriteRule ^api/base-data/read$ api/BaseData/read.php [NC,L]
 
 RewriteRule ^api/user/login$ api/User/read.php [NC,L]
-
+RewriteRule ^api/user/updateLocation$ api/User/updateLocation.php [NC,L]
 RewriteRule ^login$ login.php [NC,L]
 
 

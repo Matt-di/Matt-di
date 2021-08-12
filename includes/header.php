@@ -1,13 +1,13 @@
+<?php include "constants.php" ?>
+
 <head>
-
-
     <title>Smart Irigation System </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/index.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="assets/js/Chart.js"> </script>
-    <script src="assets/js/jquery.js"> </script>
-    <script src="assets/js/bootstrap.min.js"> </script>
+    <link href="<?php echo ASSET_URL ?>/css/index.css" rel="stylesheet" />
+    <link href="<?php echo ASSET_URL ?>/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="<?php echo ASSET_URL ?>/js/Chart.js"> </script>
+    <script src="<?php echo ASSET_URL ?>/js/jquery.js"> </script>
+    <script src="<?php echo ASSET_URL ?>/js/bootstrap.min.js"> </script>
 
 
 </head>
@@ -15,32 +15,29 @@
 <body>
     <header>
         <div id="containerr">
-            <div>
-                <h2 id="sis-brand-name"><?php echo $language['title'] ?></h2>
+            <div id="sis-brand-name" class="jumbotron">
+                <h2 ><?php echo $language['title'] ?></h2>
             </div>
         </div>
 
     </header>
     <nav id="sis-navbar" class="navbar navbar-expand-md">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">SIS</a>
-
-        <!-- Toggler/collapsibe Button -->
+        <a class="navbar-brand" href=<?php echo BASE_URL ?>>SIS</a>
+ 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
+                    <a class="nav-link" href=<?php echo BASE_URL ?>>Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="userprofile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="weathercondition">Profile</a>
+                    <a class="nav-link" href="weathercondition">Weather Forecast</a>
                 </li>
                 <li class="nav-item">
                     <div class="btn-group">

@@ -39,18 +39,34 @@ class Action
     function selectLanguage()
 
     {
-
         $query = "SELECT lang FROM setting";
         $result = $this->conn->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc() ;
                 return $row['lang'];
-            
         }
     }
 
-    function setSession()
+    function getLocation()
     {
+        $query = "SELECT field_latitude,field_longitude FROM field WHERE field_id =1";
+        $result = $this->conn->query($query);
+        if($result->num_rows >0)
+        {
+            $row = $result->fetch_assoc();
+            $ocation ["lat"]= $row['field_latitude'];
+            $ocation ["lon"]=$row['field_longitude'];
+        return $ocation;
+
+        }
+    }
+
+    function setSession($email,$password)
+    {
+        $_SESSION['email']=$email;
+        $_SESSION['userLogged'] = true;
+
+        session_commit();
     }
 
     function isSetSession()
