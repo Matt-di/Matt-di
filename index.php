@@ -1,4 +1,3 @@
-
 <?php
 
 include_once "class/Action.php";
@@ -27,7 +26,7 @@ include "includes/header.php";
     <div class="row">
         <section id="list_data_section" class="col-md-4">
             <div>
-                <p>The following data</p>
+                <p><?php echo $language['currentDataTitle'] ?></p>
                 <div class="card_item">
                     <div class="card_title" style="background-color:rgba(233,56,77,0.7);">
                         <p><span id="soil-v"><?php echo $language['soilMoisture'] ?></span>%</p>
@@ -48,10 +47,10 @@ include "includes/header.php";
                     </div>
                     <div class="card_container">
                         <div class="card_image">
-                            <img src="moisture.jpg" alt="Soil Moisture Image" />
+                            <img src="moisture.jpg" alt="humidity" />
                         </div>
                         <div class="card_detail">
-                            <p>The Soil Status is : 40% wet</p>
+                            <p>Environmental Humidity is : 40% wet</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +60,7 @@ include "includes/header.php";
                     </div>
                     <div class="card_container">
                         <div class="card_image">
-                            <img src="moisture.jpg" alt="Soil Moisture Image" />
+                            <img src="moisture.jpg" alt="temperature Image" />
                         </div>
                         <div class="card_detail">
                             <p>The temperature is to hot</p>
@@ -74,7 +73,7 @@ include "includes/header.php";
                     </div>
                     <div class="card_container">
                         <div class="card_image">
-                            <img src="moisture.jpg" alt="Soil Moisture Image" />
+                            <img src="moisture.jpg" alt="Water Level Image" />
                         </div>
                         <div class="card_detail">
                             <p>Water Level is getting low</p>
@@ -84,46 +83,48 @@ include "includes/header.php";
 
             </div>
         </section>
-        <section id="detail_data_section" class="col-md-8 table-responsive">
+        <section id="detail_data_section" class="col-md-7 table-responsive">
             <div class="row">
                 <div class="col-12" height="400px">
                     <canvas id="myChart" class="table">
                     </canvas>
-                    <a class="btn btn-primary" href="displayAll.php">See All Data</a>
+                    <a class="btn btn-primary" href="displayAll.php"><?php echo $language['seeAllDataBtn'] ?></a>
                 </div>
             </div>
             <hr style="color:red;" />
             <div class="row">
-                <section id="control-section" class="col-12">
-                    <p>Actions </p>
+                <section id="control-section" class="col-sm-12">
+                    <p class="text-center" style="background-color: #a2a33a;"><?php echo $language['actionsTitle'] ?></p>
                     <div id="control-actions" class="row ">
 
-                        <div class="card m-2">
+                        <div class="col-sm-12 col-md-3 card   m-1">
                             <p class="text-center p-2">User</p>
-                            <button type="button" class="btn btn-default" value="" id="change-control-mode"><?php echo $language['controlMode'] ?></button>
+                            <button type="button" class="btn btn-default m-2" value="" id="change-control-mode"><?php echo $language['controlMode'] ?></button>
 
                         </div>
-                        <div class="  card m-2">
+                        <div class="col-sm-12  col-md-3 card m-1">
                             <p class="text-center p-2">motor On/Off</p>
                             <button type="button" class="p-2 btn btn-default m-2 " disabled value="" id="change-motor-status"><?php echo $language['motorStatus'] ?></button>
 
                         </div>
-                        <div class=" card m-2">
+                        <div class="col-sm-12 col-md-5 card m-1">
                             <p class="text-center p-2">Soil Threshold</p>
                             <button type="button" class="p-2 btn btn-default m-2" value="" id="change-soil-moisture"> <?php echo $language['soilMoistureTV'] ?></button>
 
                         </div>
-                        <div class=" card m-2">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 card m-1">
                             <p class="text-center p-2">Temperature Threshold</p>
                             <button type="button" class="p-2 btn btn-default m-2" value="" id="change-temperature"><?php echo $language['temperatureTV'] ?></button>
 
                         </div>
-                        <div class=" card m-2">
+                        <div class="col-sm-12 col-md-4  card m-1">
                             <p class="text-center p-2">Humidity Threshold</p>
                             <button type="button" class="p-2 btn btn-default m-2" value="" id="change-humidity"><?php echo $language['humidityTV'] ?></button>
 
                         </div>
-                        <div class=" card m-2">
+                        <div class="col-sm-12 col-md-4 card m-2">
                             <p class="text-center p-2">User</p>
                             <button type="button" class="p-2 btn btn-default m-2" value="" id="change-phone-number"><?php echo $language['phoneNumber'] ?></button>
 
@@ -141,9 +142,9 @@ include "includes/header.php";
     </div>
 
     <div class="row">
-        <section id="status-section" class="col-md-6">
-            <h2>base data status</h2>
-            <div id="mybasedata" class="jumbtron"></div>
+        <section id="status-section" class="col-md-12">
+            <h2 class="text-center bg-secondary">Controlling Values</h2>
+            <div id="mybasedata" class="jumbtron" style="font-size: x-large;"></div>
             <!-- <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <?php echo $language['soilMoisture'] ?>
@@ -164,20 +165,18 @@ include "includes/header.php";
 
 </main>
 
-<!-- The Modal -->
+
 <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-md">
         <form name="modalForm" id="modalForm">
 
             <div class="modal-content">
 
-                <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title"><span id="modal-title">Modal Heading</span></h4>
+                    <h4 class="modal-title"><span id="modal-title"></span></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
                 <div class="modal-body">
                     <span id="myAlert">
 
@@ -185,8 +184,6 @@ include "includes/header.php";
                     <input type="number" min=0 max=100 id="changed-input" name="changed-input" placeholder="<?php echo $language['inputPlaceholder'] ?>" class="form-control" />
                     <input type="hidden" id="changed-name" name="changed-name" value="" />
                 </div>
-
-                <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" id="modal-cancel" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-secondary" name="change-submit" id="change-submit">Change</button>

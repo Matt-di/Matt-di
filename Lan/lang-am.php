@@ -1,6 +1,6 @@
 <?php
 $language = array(
-    "title" => "ውሃ የምያጠጣ ሲስተም",
+    "title" => "ንቁ የመስኖ ሲይስተም",
     "controlMode" => "መቆጣጠረያ ቀይር ",
     "motorStatusOn" => "ሞተር ክፈት",
     "motorStatus" => "የሞተር ሁኔታ",
@@ -13,7 +13,12 @@ $language = array(
     "temperature" =>  "ሙቀት",
     "humidity" =>  "የአየር እርጥበት",
     "chartTitle" =>  "የሰንሰር ዳታ",
+
     "language" =>"ቋንቋ ምረጥ",
+    "profile" =>"ፕሮፋይል",
+    "weatherCondition"=>" የአየር ሁኔታ",
+    "home"=>"መነሻ ገፅ",
+
     "alertTitle"=>"አዲስ የአፈር ገደብ አስገባ!",
     "change"=>"ቀይር",
     "cancel"=>"ይቅር",
@@ -24,8 +29,10 @@ $language = array(
     "autoControl" =>"በራሱ ይቆጣጠር (አርዱእኖ)",
     "userControl" => "በትዛዝ ተቆጣጠር  (ተጠቃሚ)",
     "errorOnlyNumber"=>"እባክዎን፣ ቁጥር ብቻ ያስገቡ!",
-    "errorBetweenNumber" =>"0 እና 100 መሀል ብቻ ነዉ ማስገባት የምችሉት። "
-    
+    "errorBetweenNumber" =>"0 እና 100 መሀል ብቻ ነዉ ማስገባት የምችሉት። ",
 
+    "currentDataTitle" => " ለመጨረሻ ጊዜ የተነበበ",
+    "seeAllDataBtn" => "ሁሉንም እይ",
+    "actionsTitle" => "ድርጊት",
 
 );

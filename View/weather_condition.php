@@ -33,17 +33,18 @@ include "../includes/header.php";
                 </div>
             </div>
             <div class="col-md-6">
-                <span id="message"></span>
                 <form class="form-inline" id="update-location-form">
                     <input type="text" class="form-control m-2" id="latitude" name="latitude" placeholder="Latitude" />
                     <input type="text" class="form-control m-2" id="longitude" name="longitude" placeholder="longitude" />
+
                     <input type="submit" class="btn btn-secondary form-control m-2" value="Update" />
                 </form>
+                <span class="m-2" id="message"></span>
             </div>
         </div>
 
         <div class="row">
-            <div class="card col-md-6 m-1">
+            <div class="card col-md-8 m-1">
                 <div class="card-title">
                     <h3>Hello</h3>
                 </div>
@@ -57,7 +58,7 @@ include "../includes/header.php";
             </div>
 
         </div>
-        <div class="row">
+        <div class="row m-1">
             <div class="d-flex flex-row list-group bg-secondary">
                 <div class="card  m-1">
                     <div class="card-title">
@@ -116,15 +117,18 @@ include "../includes/header.php";
 
 <script>
     function checkInput() {
-        if ($("#latitude").val() == "" || $("#longitude").val() == "") return false;
-        else if (Number.isNaN($("#latitude").val())) {
+        if ($("#latitude").val() == "" || $("#longitude").val() == "") {
+            $("#message").text("Please provide input");
             return false;
-        } else if (Number.isNaN($("#longitude").val())) {
+        } else if (Number.isNaN($("#latitude").val()) || Number.isNaN($("#longitude").val())) {
+            $("#message").text("please provide only numvbers")
             return false;
         } else {
+            if ($("#latitude").val() < 0 || $("#latitude").val() > 100 || $("#longitude").val() < 0 || $("#longitude").val() > 100) {
+                $("#message").text("please provide number between 0 and 100")
 
-            if ($("#latitude").val() < 0 || $("#latitude").val() > 100 || $("#longitude").val() < 0 || $("#longitude").val() > 100)
                 return false;
+            }
             return true;
         }
     }

@@ -14,7 +14,12 @@ $language=array(
     "temperature" =>  "temperature",
     "humidity" =>  "Humidity",
     "chartTitle" =>  "Sensor Data",
+
     "language" =>"Select Language",
+    "profile" =>"Profile",
+    "weatherCondition"=>" Weather Forecast",
+    "home"=>"Home",
+
     "alertTitle"=>"Insert  New Soil Moisture Threshold",
     "change"=>"Change",
     "cancel"=>"Cancel",
@@ -25,8 +30,11 @@ $language=array(
     "autoControl" =>"Auto (Arduino)",
     "userControl" => "Manual (User)",
     "errorOnlyNumber"=>"Please insert number only",
-    "errorBetweenNumber" =>"Value must be less than 100 and greater than 0"
-
+    "errorBetweenNumber" =>"Value must be less than 100 and greater than 0",
+    
+    "currentDataTitle" => "Current Data",
+    "seeAllDataBtn" => "View All",
+    "actionsTitle" => "Actions",
 
     
 );

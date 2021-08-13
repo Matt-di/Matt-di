@@ -15,9 +15,7 @@
 <body>
     <header>
         <div id="containerr">
-            <div id="sis-brand-name" class="jumbotron">
                 <h2 ><?php echo $language['title'] ?></h2>
-            </div>
         </div>
 
     </header>
@@ -31,13 +29,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href=<?php echo BASE_URL ?>>Home</a>
+                    <a class="nav-link" href=<?php echo BASE_URL ?>><?php echo $language['home'] ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="userprofile">Profile</a>
+                    <a class="nav-link" href="userprofile"><?php echo $language['profile'] ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="weathercondition">Weather Forecast</a>
+                    <a class="nav-link" href="weathercondition"><?php echo $language['weatherCondition'] ?></a>
                 </li>
                 <li class="nav-item">
                     <div class="btn-group">

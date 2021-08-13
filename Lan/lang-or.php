@@ -13,7 +13,12 @@ $language = array(
     "temperature" => "Hoo'insa",
     "humidity" => "Jidhiinsa Qillensa",
     "chartTitle" => "Datawaan Sensorii",
+
     "language" =>"Afaan Filladhu",
+    "profile" =>"Enyuumeessa",
+    "weatherCondition"=>" Haala Qillensaa",
+    "home"=>"Jalqabbi",
+
     "alertTitle"=>"Jidhiinsa Biyyee Olaanaa Haaraa Galchi",
     "change"=>"Jijjiri",
     "cancel"=>"Dhisi",
@@ -24,8 +29,11 @@ $language = array(
     "autoControl" =>"To'annaa Ofnaan (Arduino)",
     "userControl" => "To'annaa Ajajaan (Fayyadamaa)",
     "errorOnlyNumber"=>"Maalo, Lakkofsaa qofa galcha!",
-    "errorBetweenNumber" =>"Gatiin Galchuu dandessaan 0 fi 100 gidduu qofa."
+    "errorBetweenNumber" =>"Gatiin Galchuu dandessaan 0 fi 100 gidduu qofa.",
 
+    "currentDataTitle" => "Daataa Ammee",
+    "seeAllDataBtn" => "Daataa Hunda Ilaalii",
+    "actionsTitle" => "Gocha",
 
 
 

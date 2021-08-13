@@ -12,18 +12,18 @@ body {
 }
 
 header {
-    background: url("../assets/back2.jpg") no-repeat;
-    background-size: cover;
-    height: 250px;
-    width: auto;
+    background-image: url('../back.gif');
+    padding: 60px;
     text-align: center;
-    background-origin: content-box;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
 }
 
 header h2 {
     font-size: 50px;
     text-transform: uppercase;
-    color: rgb(84, 136, 194);
+    color: rgb(253, 254, 255);
 
 }
 
@@ -84,14 +84,13 @@ div.card_detail {
 }
 
 nav {
-    background: rgb(10, 24, 24);
+    background: rgb(93, 182, 182);
 }
 
-nav .navbar-toggler {
+ nav .navbar-toggler {
     display: block;
-    background-color: black;
+    background-color:#0a251f;
     color: white;
-
 }
 
 #sis-navbar a {
