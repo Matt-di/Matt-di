@@ -1,7 +1,8 @@
 ### HEY >>>
 - 👋 Hi, I’m @Matt-di
 - 👀 I’m interested in coding and writing to develop apps
-- 🌱 I’m currently learning pursuing bachelor of computer science at MTU
+- 🌱 Flutter developer, React and Nodejs, Laravel
+- 📫 Reach out for any enquiries
 - 📫 How to reach me email: matirezzone6@gmail.com
 
 <!---
