@@ -1,6 +1,6 @@
 # Hi there, I'm Matt! 👋
 
-![Profile views](https://avatars.githubusercontent.com/u/52673343?v=4) ![GitHub followers](https://img.shields.io/github/followers/Matt-di?label=Follow&style=social) ![GitHub stars](https://img.shields.io/github/stars/Matt-di?label=Stars&style=social)
+![GitHub followers](https://img.shields.io/github/followers/Matt-di?label=Follow&style=social) ![GitHub stars](https://img.shields.io/github/stars/Matt-di?label=Stars&style=social)
 
 ---
 
