@@ -6,7 +6,7 @@
 
 ## 🚀 About Me
 
-I'm a passionate **full-stack developer** specializing in **Laravel, React, Vue, Flutter, and Node.js**. I love crafting beautiful, efficient, and scalable web applications. When I'm not coding, you can find me indulging in [your hobbies].
+I'm a passionate **full-stack developer** specializing in **Laravel, React, Vue, Flutter, and Node.js**. I love crafting beautiful, efficient, and scalable web applications. You can find me indulging in playing games when I'm not coding.
 
 🌍 Based in Ethiopia  
 
